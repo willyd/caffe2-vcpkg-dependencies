@@ -1,4 +1,7 @@
 @echo off
+
+set PATH=C:\Program Files\CMake\bin;C:\Program Files (x86)\CMake\bin;%PATH%
+
 set ROOT_DIR=C:\Projects
 set VCPKG_DIR=C:\Projects\vcpkg
 
