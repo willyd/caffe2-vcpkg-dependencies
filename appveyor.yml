@@ -1,0 +1,4 @@
+version: 1.0.{build}
+cache: C:\Projects\vcpkg
+build_script:
+- cmd: call build.bat
