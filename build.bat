@@ -1,7 +1,5 @@
 @echo off
 
-set PATH=C:\Program Files\CMake\bin;C:\Program Files (x86)\CMake\bin;%PATH%
-
 set ROOT_DIR=C:\Projects
 set VCPKG_DIR=C:\Projects\vcpkg
 
@@ -13,6 +11,11 @@ pushd "%ROOT_DIR%"
 git clone https://github.com/willyd/vcpkg.git
 pushd vcpkg
 git checkout opencv-static
+
+powershell -NoProfile -Exec ByPass -Command ".\scripts\fetchDependency.ps1 -Dependency cmake -downloadPromptOverride '1'"
+powershell -NoProfile -Exec ByPass -Command ".\scripts\fetchDependency.ps1 -Dependency nuget -downloadPromptOverride '1'"
+powershell -NoProfile -Exec ByPass -Command ".\scripts\fetchDependency.ps1 -Dependency git -downloadPromptOverride '1'"
+
 call bootstrap-vcpkg.bat
 .\vcpkg.exe install glog gflags eigen3 protobuf lmdb --triplet x64-windows-static
 popd
