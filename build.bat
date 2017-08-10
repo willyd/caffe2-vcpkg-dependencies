@@ -6,14 +6,14 @@ if EXIST "%VCPKG_DIR%" (goto build_project)
 
 REM install vcpkg and dependencies
 if NOT EXIST "%ROOT_DIR%" (mkdir "%ROOT_DIR%")
-cd /d "%ROOT_DIR%"
+pushd "%ROOT_DIR%"
 git clone https://github.com/willyd/vcpkg.git
-cd vcpkg
+pushd vcpkg
 git checkout opencv-static
-
 call bootstrap-vcpkg.bat
-
 .\vcpkg.exe install glog gflags eigen3 protobuf lmdb --triplet x64-windows-static
+popd
+popd
 
 :build_project
 REM list installed packages
