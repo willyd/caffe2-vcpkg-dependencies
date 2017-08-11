@@ -1,12 +1,10 @@
 @echo off
 
-if NOT DEFINED VCPKG_DIR set VCPKG_DIR="%cd%\vcpkg"
+if NOT DEFINED ROOT_DIR set ROOT_DIR=C:\Projects
+if NOT DEFINED VCPKG_DIR set VCPKG_DIR=%ROOT_DIR%\vcpkg
 
-REM Skip building dependencies
-if EXIST "%VCPKG_DIR%" (
-    echo Dependencies already installed.
-    goto :EOF
-)
+if NOT EXIST "%ROOT_DIR%" (mkdir "%ROOT_DIR%")
+pushd  "%ROOT_DIR%"
 
 echo Builing dependencies
 
@@ -23,10 +21,11 @@ powershell -NoProfile -Exec ByPass -Command ".\scripts\fetchDependency.ps1 -Depe
 powershell -NoProfile -Exec ByPass -Command ".\scripts\fetchDependency.ps1 -Dependency git -downloadPromptOverride '1'"
 
 REM build vcpkg if it does not exist
-if NOT EXIST "%VCPKG_DIR%\vcpkg.exe" ( call bootstrap-vcpkg.bat )
+call bootstrap-vcpkg.bat
 
 REM install some of the dependencies
-.\vcpkg.exe install gflags glog eigen3 protobuf lmdb --triplet x64-windows-static
+REM .\vcpkg.exe install gflags glog eigen3 protobuf lmdb --triplet x64-windows-static
+.\vcpkg.exe install gflags --triplet x64-windows-static
 
 REM remove unncessary stuff
 rmdir /S /Q .git

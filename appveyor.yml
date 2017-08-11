@@ -1,19 +1,8 @@
 version: 1.0.{build}
-cache:
-    - vcpkg -> scripts\appveyor\install_dependencies.bat
-
-environment:
- matrix:
-
-    # define a variable (BUILD_DEPENDENCIES_ONLY) to avoid
-    # building the project only the vcpkg dependencies will
-    # be built and cached
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      BUILD_DEPENDENCIES_ONLY: true
-
-    # hereafter the vcpkg dependencies will be restored and
-    # the project will build as normal
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+image: Visual Studio 2017
 
 build_script:
-- cmd: call scripts\appveyor\build.bat
+- cmd: call scripts\appveyor\install_dependencies.bat
+
+artifacts:
+    - path: C:\Projects\vcpkg
