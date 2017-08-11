@@ -7,7 +7,7 @@ call "%~dp0\install_dependencies.bat"
 
 REM when saving the cached vcpkg packages
 REM skip the build
-if "%APPVEYOR_CACHE_SKIP_SAVE%" == "false" (goto :EOF)
+if "%BUILD_DEPENDENCIES_ONLY%" == "true" (goto :EOF)
 
 REM build project
 mkdir build
