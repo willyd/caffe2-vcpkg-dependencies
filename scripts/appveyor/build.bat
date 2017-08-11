@@ -1,13 +1,17 @@
 @echo off
 
-if NOT DEFINED VCPKG_DIR set VCPKG_DIR="%cd%\vcpkg"
+if NOT DEFINED ROOT_DIR set ROOT_DIR=C:\Projects
+if NOT DEFINED VCPKG_DIR set VCPKG_DIR=%ROOT_DIR%\vcpkg
 
-REM build dependencies with vcpkg
-call "%~dp0\install_dependencies.bat"
+REM download prebuilt dependencies
+if NOT EXIST "%ROOT_DIR%" (mkdir "%ROOT_DIR%")
+pushd "%ROOT_DIR%"
 
-REM when saving the cached vcpkg packages
-REM skip the build
-if "%BUILD_DEPENDENCIES_ONLY%" == "true" (goto :EOF)
+appveyor DownloadFile https://ci.appveyor.com/api/projects/willyd/caffe2-vcpkg-dependencies/artifacts/vcpkg.zip?branch=windows-dependencies -FileName vcpkg.zip
+7z x vcpkg.zip
+
+dir "%VCPKG_DIR%"
+popd
 
 REM build project
 mkdir build
