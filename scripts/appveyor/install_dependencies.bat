@@ -27,15 +27,7 @@ if NOT EXIST "%VCPKG_DIR%\vcpkg.exe" ( call bootstrap-vcpkg.bat )
 
 REM install some of the dependencies
 REM .\vcpkg.exe install gflags glog eigen3 protobuf lmdb --triplet x64-windows-static
-REM .\vcpkg export gflags:x64-windows-static ^
-REM                glog:x64-windows-static ^
-REM                eigen3:x64-windows-static ^
-REM                protobuf:x64-windows-static ^
-REM                lmdb:x64-windows-static ^
-REM                --raw
 .\vcpkg.exe install gflags --triplet x64-windows-static
-.\vcpkg export gflags:x64-windows-static ^
-               --raw
 
 REM remove unncessary stuff
 rmdir /S /Q .git
