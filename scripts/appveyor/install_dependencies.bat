@@ -4,12 +4,6 @@ if NOT DEFINED ROOT_DIR set ROOT_DIR=C:\Projects
 if NOT DEFINED VCPKG_DIR set VCPKG_DIR=C:\Projects\vcpkg
 
 REM skip the installation of vcpkg if already present
-echo dir "%ROOT_DIR%"
-dir "%ROOT_DIR%"
-
-dir "%VCPKG_DIR%"
-dir "%VCPKG_DIR%"
-
 if EXIST "%VCPKG_DIR%\vcpkg.exe" ( goto install_dependencies )
 
 REM install vcpkg and dependencies
@@ -36,7 +30,6 @@ popd
 :install_dependencies
 pushd  "%VCPKG_DIR%"
 REM install some of the dependencies
-REM .\vcpkg.exe install glog gflags eigen3 protobuf lmdb --triplet x64-windows-static
-.\vcpkg.exe install gflags --triplet x64-windows-static
+.\vcpkg.exe install gflags glog eigen3 protobuf lmdb --triplet x64-windows-static
 .\vcpkg list
 popd

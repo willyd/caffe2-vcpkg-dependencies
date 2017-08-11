@@ -3,8 +3,17 @@ cache: C:\Projects\vcpkg -> scripts\appveyor\install_dependencies.bat
 
 environment:
  matrix:
+
+    # define a variable (APPVEYOR_CACHE_SKIP_SAVE) to avoid
+    # building the project only the vcpkg dependencies will
+    # be built and cached
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      APPVEYOR_CACHE_SKIP_SAVE: false
+
+    # hereafter the vcpkg dependencies will be restored and
+    # the project will build as normal
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      APPVEYOR_CACHE_SKIP_SAVE: true
 
 build_script:
 - cmd: call scripts\appveyor\build.bat

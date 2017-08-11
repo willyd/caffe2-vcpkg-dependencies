@@ -5,6 +5,10 @@ if NOT DEFINED VCPKG_DIR set VCPKG_DIR=C:\Projects\vcpkg
 
 call "%~dp0\install_dependencies.bat"
 
+REM when saving the cached vcpkg packages
+REM skip the build
+if "%APPVEYOR_CACHE_SKIP_SAVE%" == "false" (goto :EOF)
+
 REM build project
 mkdir build
 pushd build
@@ -14,3 +18,4 @@ cmake -G"Visual Studio 15 2017 Win64" ^
       -DCMAKE_TOOLCHAIN_FILE:FILEPATH="%VCPKG_DIR%\scripts\buildsystems\vcpkg.cmake" ^
       ..
 popd
+
