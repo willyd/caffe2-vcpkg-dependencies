@@ -1,5 +1,5 @@
 version: 1.0.{build}
-cache: C:\Projects\vcpkg
+cache: C:\Projects\vcpkg -> scripts\appveyor\install_dependencies.bat
 
 environment:
  matrix:
@@ -7,4 +7,4 @@ environment:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
 build_script:
-- cmd: call build.bat
+- cmd: call scripts\appveyor\build.bat

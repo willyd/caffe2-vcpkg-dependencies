@@ -1,7 +1,7 @@
 @echo off
 
-set ROOT_DIR=C:\Projects
-set VCPKG_DIR=C:\Projects\vcpkg
+if NOT DEFINED ROOT_DIR ( set ROOT_DIR=C:\Projects )
+if NOT DEFINED VCPKG_DIR ( set VCPKG_DIR=C:\Projects\vcpkg )
 
 if EXIST "%VCPKG_DIR%\vcpkg.exe" ( goto install_dependencies )
 
@@ -29,17 +29,6 @@ popd
 :install_dependencies
 pushd  "%VCPKG_DIR%"
 REM install some of the dependencies
-REM .\vcpkg.exe install glog gflags eigen3 protobuf lmdb --triplet x64-windows-static
-.\vcpkg.exe install gflags --triplet x64-windows-static
+.\vcpkg.exe install glog gflags eigen3 protobuf lmdb --triplet x64-windows-static
 .\vcpkg list
-popd
-
-REM build project
-mkdir build
-pushd build
-cmake -G"Visual Studio 15 2017 Win64" ^
-      -DBUILD_SHARED_LIBS=OFF ^
-      -DVCPKG_TARGET_TRIPLET=x64-windows-static ^
-      -DCMAKE_TOOLCHAIN_FILE:FILEPATH="%VCPKG_DIR%\scripts\buildsystems\vcpkg.cmake" ^
-      ..
 popd
