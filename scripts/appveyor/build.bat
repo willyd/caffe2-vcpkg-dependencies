@@ -1,7 +1,7 @@
 @echo off
 
-if NOT DEFINED ROOT_DIR ( set ROOT_DIR=C:\Projects )
-if NOT DEFINED VCPKG_DIR ( set VCPKG_DIR=C:\Projects\vcpkg )
+if NOT DEFINED ROOT_DIR set ROOT_DIR=C:\Projects
+if NOT DEFINED VCPKG_DIR set VCPKG_DIR=C:\Projects\vcpkg
 
 call "%~dp0\install_dependencies.bat"
 
