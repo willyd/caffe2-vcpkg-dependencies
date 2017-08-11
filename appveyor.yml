@@ -5,4 +5,4 @@ build_script:
 - cmd: call scripts\appveyor\install_dependencies.bat
 
 artifacts:
-    - path: C:\Projects\vcpkg
+    - path: vcpkg
