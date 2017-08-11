@@ -1,5 +1,6 @@
 version: 1.0.{build}
-cache: C:\Projects\vcpkg -> scripts\appveyor\install_dependencies.bat
+cache:
+    - vcpkg -> scripts\appveyor\install_dependencies.bat
 
 environment:
  matrix:
