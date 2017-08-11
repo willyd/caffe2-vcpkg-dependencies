@@ -1,4 +1,10 @@
 version: 1.0.{build}
 cache: C:\Projects\vcpkg
+
+environment:
+ matrix:
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+
 build_script:
 - cmd: call build.bat
