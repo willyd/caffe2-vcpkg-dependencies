@@ -9,10 +9,11 @@ REM install vcpkg and dependencies
 if NOT EXIST "%ROOT_DIR%" (mkdir "%ROOT_DIR%")
 pushd "%ROOT_DIR%"
 
-git clone https://github.com/willyd/vcpkg.git .
-git checkout opencv-static
+git clone https://github.com/willyd/vcpkg.git
 
-pushd  "%VCPKG_DIR%"
+pushd "%VCPKG_DIR%%
+
+git checkout opencv-static
 
 REM vcpkg prompts to download those so we download them manually
 powershell -NoProfile -Exec ByPass -Command ".\scripts\fetchDependency.ps1 -Dependency cmake -downloadPromptOverride '1'"
