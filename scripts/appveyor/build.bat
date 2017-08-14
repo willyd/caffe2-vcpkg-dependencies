@@ -7,7 +7,7 @@ REM download prebuilt dependencies
 if NOT EXIST "%ROOT_DIR%" (mkdir "%ROOT_DIR%")
 pushd "%ROOT_DIR%"
 
-appveyor DownloadFile https://ci.appveyor.com/api/projects/willyd/caffe2-vcpkg-dependencies/artifacts/vcpkg.zip?branch=windows-dependencies -FileName vcpkg.zip
+powershell -NoProfile -Exec ByPass -Command "wget https://ci.appveyor.com/api/projects/willyd/caffe2-vcpkg-dependencies/artifacts/vcpkg.zip?branch=windows-dependencies -OutFile vcpkg.zip"
 7z x vcpkg.zip -ovcpkg
 
 dir "%VCPKG_DIR%"
