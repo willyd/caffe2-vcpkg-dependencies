@@ -10,7 +10,6 @@ pushd "%ROOT_DIR%"
 powershell -NoProfile -Exec ByPass -Command "wget https://ci.appveyor.com/api/projects/willyd/caffe2-vcpkg-dependencies/artifacts/vcpkg.zip?branch=windows-dependencies -OutFile vcpkg.zip"
 7z x vcpkg.zip -ovcpkg
 
-dir "%VCPKG_DIR%"
 popd
 
 REM build project
