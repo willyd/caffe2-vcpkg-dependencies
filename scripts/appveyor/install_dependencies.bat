@@ -25,7 +25,7 @@ call bootstrap-vcpkg.bat
 
 .\vcpkg.exe install msmpi
 set ERRORLEVEL=0
-.\downloads\MSMpiSetup-8.1.exe
+.\downloads\MSMpiSetup-8.1.exe -unattend
 
 REM install some of the dependencies
 .\vcpkg.exe install gflags glog boost hdf5 openblas protobuf lmdb --triplet x64-windows-static
