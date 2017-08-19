@@ -1,5 +1,5 @@
 version: 1.0.{build}
-image: Visual Studio 2017
+image: Visual Studio 2015
 clone_folder: c:\projects
 build_script:
 - cmd: call scripts\appveyor\install_dependencies.bat
