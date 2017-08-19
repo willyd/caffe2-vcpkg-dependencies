@@ -25,7 +25,7 @@ call bootstrap-vcpkg.bat
 
 .\vcpkg.exe install msmpi
 set ERRORLEVEL=0
-powershell -NoProfile -Exec ByPass -Command "$setup = gci downloads\MSMpiSetup*.exe; . $setup.FullName"
+.\downloads\MSMpiSetup-8.1.exe
 
 REM install some of the dependencies
 .\vcpkg.exe install gflags glog boost hdf5 openblas protobuf lmdb --triplet x64-windows-static
