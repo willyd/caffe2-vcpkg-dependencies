@@ -30,7 +30,12 @@ set ERRORLEVEL=0
 .\vcpkg.exe install msmpi --triplet x64-windows
 
 REM install some of the dependencies
+.\vcpkg.exe install openblas --triplet x64-windows
 .\vcpkg.exe install gflags glog boost hdf5 openblas protobuf lmdb opencv --triplet x64-windows
+
+REM move log files in case an error occurs
+mkdir logs
+robocopy buildtrees\ logs *x64-windows*.log /S
 
 REM remove unncessary stuff
 rmdir /S /Q .git
