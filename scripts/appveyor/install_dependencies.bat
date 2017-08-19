@@ -31,7 +31,7 @@ set ERRORLEVEL=0
 
 REM install some of the dependencies
 .\vcpkg.exe install openblas --triplet x64-windows
-.\vcpkg.exe install gflags glog boost hdf5 openblas protobuf lmdb opencv --triplet x64-windows
+REM .\vcpkg.exe install gflags glog boost hdf5 openblas protobuf lmdb opencv --triplet x64-windows
 
 REM move log files in case an error occurs
 mkdir logs
